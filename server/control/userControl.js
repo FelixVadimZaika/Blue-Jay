@@ -9,7 +9,7 @@ const generateJwt = (id,email,role)=>{
     )
 }
 class UserControl {
-    async registration(req,res){
+    async registration(req,res,next){
         const{email,password,role} = req.body
         if(!email || !password){
             return next(ErrorApi.badRequest('Некоректний email або password'))

@@ -9,6 +9,7 @@ const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 const path = require('path')
 
 const PORT = process.env.PORT || 5000
+
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -17,10 +18,6 @@ app.use(fileUpload({}))
 app.use('/api',router)
 //Обробка ошибок, останній Middleware
 app.use(errorHandler)
-
-//app.get('/', (req,res) => {
-//    res.status(200).json({message: 'Работає!!!'})
-//})
 
 const start = async () => {
     try{

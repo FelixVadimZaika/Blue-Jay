@@ -6,6 +6,7 @@ import DeviceStore from "./store/DeviceStore";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export const Context = createContext(null)
+
 root.render(
   <React.StrictMode>
       <Context.Provider value={{

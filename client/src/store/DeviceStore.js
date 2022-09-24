@@ -2,21 +2,15 @@ import {makeAutoObservable} from "mobx";
 
 export default class DeviceStore{
     constructor(){
-        this._types = [
-            {id: 1, name: 'Холодильники'},
-            {id: 3, name: 'Лампи'}
-        ]
-        this._brands = [
-            {id: 1, name: 'Samsung'},
-            {id: 2, name: 'Liebherr'}
-        ]
-        this._devices = [
-            {id: 1, name: "10W", price: 15, rating: 0, img: 'https://www.purposechurch.com/wp-content/uploads/2017/10/fpo400x300.png'},
-            {id: 2, name: "CNef", price: 12999, rating: 0, img: 'https://www.purposechurch.com/wp-content/uploads/2017/10/fpo400x300.png'},
-            {id: 3, name: "newss", price: 15999, rating: 0, img: 'https://www.purposechurch.com/wp-content/uploads/2017/10/fpo400x300.png'},
-            {id: 4, name: "testik", price: 3422, rating: 0, img: 'https://www.purposechurch.com/wp-content/uploads/2017/10/fpo400x300.png'}
-
-        ]
+        this._types = []
+        this._brands = []
+        this._devices = []
+        this._baskets = []
+        this._selectedType = {}
+        this._selectedBrand = {}
+        this._page = 1
+        this._totalCount = 0
+        this._limit = 2
         makeAutoObservable(this)
     }
     setTypes(types){
@@ -28,6 +22,25 @@ export default class DeviceStore{
     setDevices(device){
         this._devices = device
     }
+    setSelectedType(type){
+        this._selectedType = type
+    }
+    setSelectedBrand(brand){
+        this._selectedBrand = brand
+    }
+    setPage(page){
+        this._page = page
+    }
+    setTotalCount(count){
+        this._totalCount = count
+    }
+    setBaskets(basket){
+        this._baskets = basket
+    }
+
+    get basket() {
+        return this._baskets
+    }
     get types(){
         return this._types
     }
@@ -36,5 +49,22 @@ export default class DeviceStore{
     }
     get devices(){
         return this._devices
+    }
+    get selectedType(){
+        this.setPage(1)
+        return this._selectedType
+    }
+    get selectedBrand(){
+        this.setPage(1)
+        return this._selectedBrand
+    }
+    get totalCount(){
+        return this._totalCount
+    }
+    get page(){
+        return this._page
+    }
+    get limit(){
+        return this._limit
     }
 }
