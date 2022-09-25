@@ -47,6 +47,7 @@ const Basket = observer(() => {
 
                 </Card>
             )}
+
         </Container>
     );
 });

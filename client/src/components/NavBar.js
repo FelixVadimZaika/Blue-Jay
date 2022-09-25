@@ -5,9 +5,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {NavLink} from "react-router-dom";
 import {ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE,BASKET_ROUTE} from "../utils/consts";
-import {Button} from "react-bootstrap";
+import {Badge, Button} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import {useHistory} from "react-router-dom";
+import logB from '../assets/Group.png'
+
 
 const NavBar = observer( () => {
     const {user} = useContext(Context)
@@ -18,17 +20,29 @@ const NavBar = observer( () => {
     }
 
     return (
-        <Navbar bg="primary" variant="dark">
+        <Navbar style={{background:"#232F3E"}}  variant="dark" >
             <Container>
-                <NavLink style={{color:'white'}} to={SHOP_ROUTE}>Blue-Jay</NavLink>
+                <NavLink style={{color:'white'}} to={SHOP_ROUTE}>
+                    <img src={logB} />
+
+                    Blue-Jay
+                </NavLink>
+                {/*<Form className="d-flex">*/}
+                {/*    <Form.Control*/}
+                {/*        type="search"*/}
+                {/*        placeholder="Search"*/}
+                {/*        className="me-2"*/}
+                {/*        aria-label="Search"*/}
+                {/*    />*/}
+                {/*    <Button variant="outline-success">Пошук</Button>*/}
+                {/*</Form>*/}
                 {user.isAuth ?
                     <Nav className="ml-auto" style={{color: 'white'}}>
                         <Button
                             variant={"outline-light"}
-                            className="mr-2"
                             onClick={() => history.push(BASKET_ROUTE)}
                         >
-                            Корзина
+                            Корзина <Badge bg="secondary"></Badge>
                         </Button>
                         <Button
                             variant={"outline-light"}

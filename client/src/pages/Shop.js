@@ -7,6 +7,7 @@ import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {fetchBrands, fetchDevices, fetchTypes} from "../http/deviceAPI";
 import Pages from "../components/Pages";
+import SliderBar from "../components/SliderBar";
 
 const Shop = observer(() => {
     const {device} = useContext(Context)
@@ -25,9 +26,9 @@ const Shop = observer(() => {
             device.setTotalCount(data.count)
         })
     },[device.page, device.selectedType, device.selectedBrand,])
-
     return (
         <Container>
+            <SliderBar/>
             <Row className="mt-2">
                 <Col md={3}>
                     <TypeBars/>
